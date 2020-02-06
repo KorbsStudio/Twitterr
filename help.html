@@ -1,0 +1,59 @@
+<html>
+    <title>Chirp</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <body>
+      <div class="sidebar">
+        <div class="top">
+          <img id="menu1" src="./icon/icon.png">
+        </div>
+      </div>
+        <div class="mainview">
+                <h1 id="header">About</h1>
+            <webview id="webviewTwitter" src="https://github.com/KorbsStudio/chirp-chirp/wiki/Help" webpreferences="nativeWindowOpen=true" allowpopups=true></webview>
+            <div id="openMenu" class="menu">
+               <span class="closeMenu"></span>
+                <div class="menubtns">
+                        <a id="goBackMENU" href="./main.html">Go Back to Feed</a>
+                        <a style="border-radius: 10px 10px 0px 0px;" href="./feedonly.html">Feed Only View</a>
+                        <a href="./update.html">Update</a>
+                        <a href="./about.html" style="border-radius: 0px 0px 10px 10px !important;">About</a>
+                </div>
+                <p id="version">v0.1.4</p>
+            </div>
+        </div>
+    </body>
+    <script>
+            var modal = document.getElementById("openMenu");
+            
+            var btn = document.getElementById("menu1");
+            
+            var span = document.getElementsByClassName("closeMenu")[0];
+            
+            btn.onclick = function() {
+              modal.style.display = "block";
+            }
+            
+            span.onclick = function() {
+              modal.style.display = "none";
+            }
+            
+            window.onclick = function(event) {
+              if (event.target == modal) {
+                modal.style.display = "none";
+              }
+            }
+    </script>
+    <script>
+            var webview = document.getElementById('webviewTwitter');
+            webview.addEventListener('dom-ready', function () {
+                webview.insertCSS("body{background:#151F2A;color:white}.position-relative.js-header-wrapper{display:none}.pagehead.repohead.instapaper_ignore.readability-menu.experiment-repo-nav.pt-0.pt-lg-4{display:none}.footer.container-lg.width-full.p-responsive{display:none}div#wiki-rightbar{display:none}.d-flex.flex-column.flex-md-row.gh-header{opacity:0;pointer-events:none;height:0}a.muted-link{display:none}div#wiki-footer{display:none}.mt-2.mt-md-1.pb-3.gh-header-meta{display:none}.application-main{margin-top:60px}")
+            });
+          
+    </script>
+</html>
+<style>
+h1#header {
+    z-index: 4;
+    color: black;
+}
+</style>

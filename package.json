@@ -1,0 +1,26 @@
+{
+  "name": "Chrip",
+  "version": "0.1.0",
+  "description": "A Twitter desktop app built on Electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "startWithTransparentOption": "electron --enable-transparent-visuals .",
+    "startWithAllOptions": "electron --enable-transparent-visuals .",
+    "build": "electron-packager . Chirp --platform=all --out=./release-builds/ --asar=true"
+  },
+  "author": "Korbs",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^7.0.0",
+    "electron-packager": "^14.1.0"
+  },
+  "dependencies": {
+    "electron-context-menu": "^0.15.0",
+    "electron-editor-context-menu": "^1.1.1",
+    "electron-notification-shim": "^1.1.0",
+    "electron-version": "^2.0.1",
+    "react-electron-contextmenu": "^1.0.0",
+    "update-electron-app": "^1.5.0"
+  }
+}

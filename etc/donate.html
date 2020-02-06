@@ -1,0 +1,99 @@
+<html>
+  <title>Chirp</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <body style="animation: none;" onLoad="window.focus();">
+    <div style="background: #104FA6;" class="titlebar">
+      <button style="background: #003188;" id="close"></button> 
+    </div>
+    <webview src="https://Paypal.me/CorbsEditor" webpreferences="nativeWindowOpen=true" allowpopups></webview>
+    <div class="backStage">
+      <div class="htmlLoad24">
+        <p>Not loading? Check your internet connection and try again.</p>
+      </div>
+    </div>
+
+
+
+
+
+<div id="about" class="modal">
+
+
+    <div class="modal-content">
+      <span class="closeM">&times;</span>
+      <h1>Chirp</h1>
+      <p>Use the mobile twitter app from the convenience of a desktop application, works on Mac, Linux and windows.</p>
+      <p>Modified by Korbs Studio</p>
+      <p id="version">v0.1.2</p>
+      <a href="update.html" target="_blank">Need to update?</a>
+      <div class="bottomUpdate">
+        <a id="supportIcon" href="#Support">Support</a>
+        <a id="donateIcon" href="#Donate">Donate</a>
+        <a id="updateIcon" href="#Update">Update</a>
+        <a id="versionIcon" style="pointer-events: none;" href="#">v0.1.2</a>
+      </div>
+    </div>
+  </div>
+
+  </body>
+  <script src="../renderer.js"></script>
+  <script>
+    (function () {
+        // Retrieve remote BrowserWindow
+        const {BrowserWindow} = require('electron').remote
+
+        function init() {
+            // Minimize task
+            document.getElementById("min").addEventListener("click", (e) => {
+                var window = BrowserWindow.getFocusedWindow();
+                window.minimize();
+            });
+
+            // Maximize window
+            document.getElementById("max").addEventListener("click", (e) => {
+                var window = BrowserWindow.getFocusedWindow();
+                if(window.isMaximized()){
+                    window.unmaximize();
+                }else{
+                    window.maximize();
+                }
+            });
+
+            // Close app
+            document.getElementById("close").addEventListener("click", (e) => {
+                var window = BrowserWindow.getFocusedWindow();
+                window.close();
+            });
+        };
+
+        document.onreadystatechange =  () => {
+            if (document.readyState == "complete") {
+                init();
+            }
+        };
+    })();
+    </script>
+
+<script>
+    var modal = document.getElementById("about");
+    
+    var btn = document.getElementById("myBtn");
+    
+    var span = document.getElementsByClassName("closeM")[0];
+    
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+    
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    </script>
+
+</html>
