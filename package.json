@@ -1,0 +1,18 @@
+{
+  "name": "Chirp",
+  "version": "2.0.0",
+  "description": "Electron Twitter Client. Modified by Korbs Studio.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/KorbsStudio/Chirp-Chirp/",
+  "author": "Korbs Studio",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^8.0.0"
+  },
+  "dependencies": {
+    "electron-packager": "^14.2.1"
+  }
+}
