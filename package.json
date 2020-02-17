@@ -1,7 +1,7 @@
 {
-  "name": "Chirp",
+  "name": "Twitterr",
   "version": "2.0.0",
-  "description": "Electron Twitter Client. Modified by Korbs Studio.",
+  "description": "Electron Twitter Client.",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
