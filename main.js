@@ -1,20 +1,21 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
+const {Menu} = require('electron')
+const electron = require('electron')
 
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 500,
     height: 730,
-    maxWidth: 500,
-    minWidth: 500,
     resizable: false,
-    maximizable: false,
+    maximizable: true,
     frame: true,
     darkTheme: true,
     transparent: false,
     autoHideMenuBar: true,
+    icon: path.join(__dirname, './icon/icon.png'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       webviewTag: true,
@@ -27,6 +28,187 @@ function createWindow () {
       spellcheck: true,
     }
   })
+
+
+  const template = [
+    {
+      label: 'Twitterr',
+      submenu: [
+        {
+          label: 'Version 2.01',
+        }
+      ]
+    },
+    {
+      label: 'Edit',
+      submenu: [
+        {
+          role: 'undo'
+        },
+        {
+          role: 'redo'
+        },
+        {
+          type: 'separator'
+        },
+        {
+          role: 'cut'
+        },
+        {
+          role: 'copy'
+        },
+        {
+          role: 'paste'
+        },
+        {
+          role: 'delete'
+        },
+        {
+          role: 'selectall'
+        }
+      ]
+    },
+    {
+      label: 'View',
+      submenu: [
+        {
+          label: 'Reload',
+          accelerator: 'CmdOrCtrl+R',
+          click (item, focusedWindow) {
+            if (focusedWindow) focusedWindow.reload()
+          }
+        },
+        {
+          type: 'separator'
+        },
+        {
+          role: 'resetzoom'
+        },
+        {
+          role: 'zoomin'
+        },
+        {
+          role: 'zoomout'
+        }
+      ]
+    },
+    {
+      role: 'window',
+      submenu: [
+        {
+          role: 'minimize'
+        },
+        {
+          role: 'close'
+        }
+      ]
+    },
+    {
+      role: 'help',
+      submenu: [
+        {
+          label: 'Home Page',
+          click () { require('electron').shell.openExternal('https://Twitterr.KorbsStudio.com/tw/') }
+        },
+        {
+          label: 'Wiki',
+          click () { require('electron').shell.openExternal('https://github.com/KorbsStudio/Twitterr/wiki/') }
+        },
+        {
+          type: 'separator'
+        },
+        {
+          label: 'Donate',
+          click () { require('electron').shell.openExternal('https://Paypal.me/CorbsEditor') }
+        },
+        {
+          label: 'Report Issue',
+          click () { require('electron').shell.openExternal('https://github.com/KorbsStudio/Twitterr/issues') }
+        },
+      ]
+    }
+  ]
+  
+  if (process.platform === 'darwin') {
+    const name = app.getName()
+    template.unshift({
+      label: name,
+      submenu: [
+        {
+          role: 'about'
+        },
+        {
+          type: 'separator'
+        },
+        {
+          role: 'services',
+          submenu: []
+        },
+        {
+          type: 'separator'
+        },
+        {
+          role: 'hide'
+        },
+        {
+          role: 'hideothers'
+        },
+        {
+          role: 'unhide'
+        },
+        {
+          type: 'separator'
+        },
+        {
+          role: 'quit'
+        }
+      ]
+    })
+    // Edit menu.
+    template[1].submenu.push(
+      {
+        type: 'separator'
+      },
+      {
+        label: 'Speech',
+        submenu: [
+          {
+            role: 'startspeaking'
+          },
+          {
+            role: 'stopspeaking'
+          }
+        ]
+      }
+    )
+    // Window menu.
+    template[3].submenu = [
+      {
+        label: 'Close',
+        accelerator: 'CmdOrCtrl+W',
+        role: 'close'
+      },
+      {
+        label: 'Minimize',
+        accelerator: 'CmdOrCtrl+M',
+        role: 'minimize'
+      },
+      {
+        label: 'Zoom',
+        role: 'zoom'
+      },
+      {
+        type: 'separator'
+      },
+      {
+        label: 'Bring All to Front',
+        role: 'front'
+      }
+    ]
+  }
+  
+  const menu = Menu.buildFromTemplate(template)
+  Menu.setApplicationMenu(menu)
   
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')

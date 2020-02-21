@@ -11,35 +11,3 @@ body {
     color: white;
     font-family: arial;
 }
-a {
-    color: white;
-}
-a#homeButton img {
-    position: fixed;
-    top: 10px;
-    left: 13px;
-    z-index: 5;
-    width: 40px;
-}
-img#jf3J {
-    position: fixed;
-    bottom: 0px;
-    left: 50%;
-    transform: translate(-50%);
-    height: 70%;
-    border-radius: 10px 10px 0px 0px;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-    pointer-events: none;
-    animation: 2.39s UpAndOpen ease-out;
-    opacity: 0.1;
-}
-@keyframes UpAndOpen {
-    0% {
-        bottom: -500px;
-        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);   
-    }
-    100% {
-        bottom: 0px;
-        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);   
-    }
-}
