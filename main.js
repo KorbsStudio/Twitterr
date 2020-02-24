@@ -9,13 +9,16 @@ function createWindow () {
   const mainWindow = new BrowserWindow({
     width: 500,
     height: 730,
-    resizable: false,
+    maxWidth: 500, // The CSS injected is built for 500px as of now
+    minWidth: 500,
+    minHeight: 500,
+    resizable: true,
     maximizable: true,
     frame: true,
     darkTheme: true,
     transparent: false,
     autoHideMenuBar: true,
-    icon: path.join(__dirname, './icon/icon.png'),
+    icon: path.join(__dirname, './icon/icon.ico'),
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       webviewTag: true,
@@ -35,7 +38,7 @@ function createWindow () {
       label: 'Twitterr',
       submenu: [
         {
-          label: 'Version 2.01',
+          label: 'Version 2.02',
         }
       ]
     },
@@ -89,7 +92,17 @@ function createWindow () {
         },
         {
           role: 'zoomout'
-        }
+        },
+        {
+          type: 'separator'
+        },
+        {
+          label: 'Dev Tools(Disabled)',
+          accelerator: process.platform === 'darwin' ? 'Alt+Command+I' : 'Ctrl+Shift+I',
+          click (item, focusedWindow) {
+            if (focusedWindow) focusedWindow.webContents.toggleDevTools()
+          }
+        },
       ]
     },
     {
@@ -113,6 +126,10 @@ function createWindow () {
         {
           label: 'Wiki',
           click () { require('electron').shell.openExternal('https://github.com/KorbsStudio/Twitterr/wiki/') }
+        },
+        {
+          label: 'Changelog',
+          click () { require('electron').shell.openExternal('https://korbs-studio-server.github.io/twitterr-web/changelog/') }
         },
         {
           type: 'separator'
