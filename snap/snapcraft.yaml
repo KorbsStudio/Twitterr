@@ -1,14 +1,12 @@
-name: twitterr
-version: '2.031'
-summary: Browse Twitter
-description: |
-Use the mobile Twitter experience from the convenience of a desktop application that works for Windows, macOS, and Linux!
-grade: stable
-confinement: strict
 
-apps:
-  twitterr:
-    command: ./twitterr
+  name: twitterr
+  version: '2.03' # just for humans, typically '1.2+git' or '1.3.2'
+  summary: Browse Twitter.com
+  description: |
+    Use the mobile Twitter experience from the convenience of a desktop application that works for Windows, macOS, and Linux!
+
+  grade: stable # must be 'stable' to release into candidate/stable channels
+  confinement: strict # use 'strict' once you have the right plugs and slots
 
 parts:
   gnu-twitterr:
