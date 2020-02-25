@@ -8,7 +8,8 @@
   grade: stable # must be 'stable' to release into candidate/stable channels
   confinement: strict # use 'strict' once you have the right plugs and slots
 
-parts:
-  gnu-twitterr:
+  parts:
+    my-part:
     source: https://github.com/KorbsStudio/Twitterr/releases/download/v2.02/Twitterr-Linux.zip
     plugin: autotools
+  
