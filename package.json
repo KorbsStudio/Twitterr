@@ -1,6 +1,6 @@
 {
   "name": "Twitterr",
-  "version": "2.0.0",
+  "version": "2.0.3",
   "description": "Electron Twitter Client.",
   "main": "main.js",
   "scripts": {
@@ -15,6 +15,7 @@
     "electron-builder": "^22.3.2"
   },
   "dependencies": {
-    "electron-packager": "^14.2.1"
+    "electron-packager": "^14.2.1",
+    "electron-window-state": "^5.0.3"
   }
 }

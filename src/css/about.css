@@ -1,0 +1,15 @@
+body {
+    overflow: hidden;
+    background: #191F2B;
+    color: white;
+    font-family: arial;
+    pointer-events: none;
+}
+
+img {
+    width: 50px;
+}
+h1 {
+    margin-top: -43px;
+    margin-left: 67px;
+}

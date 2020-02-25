@@ -1,15 +1,20 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
-const {Menu} = require('electron')
+const { Menu, Tray } = require('electron')
 const electron = require('electron')
+const ipc = require('electron').ipcRenderer
+
+
+
 
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
+    defaultWidth: 500,
+    defaultHeight: 730,
     width: 500,
     height: 730,
-    maxWidth: 500, // The CSS injected is built for 500px as of now
     minWidth: 500,
     minHeight: 500,
     resizable: true,
@@ -31,14 +36,128 @@ function createWindow () {
       spellcheck: true,
     }
   })
+  
+  
+  var newWindow = null
+  
+  function openAboutWindow() {
+    if (newWindow) {
+      newWindow.focus()
+      return
+    }
+  
+    newWindow = new BrowserWindow({
+      height: 200,
+      resizable: false,
+      width: 440,
+      frame: true,
+      title: 'About',
+      minimizable: false,
+      fullscreenable: false,
+      autoHideMenuBar: true,
+      darkTheme: true,
+      icon: path.join(__dirname, './icon/icon.ico'),
+    })
 
+    newWindow.loadURL('file://' + __dirname + './about.html')
+  
+    newWindow.on('closed', function() {
+      newWindow = null
+    })
+  }
 
+  var newWindow = null
+  
+  function openDevWindow() {
+    if (newWindow) {
+      newWindow.focus()
+      return
+    }
+  
+    newWindow = new BrowserWindow({
+      width: 500,
+      height: 730,
+      resizable: false,
+      title: '@KorbsStudio',
+      minimizable: true,
+      fullscreenable: false,
+      autoHideMenuBar: true,
+      darkTheme: true,
+      icon: path.join(__dirname, './icon/icon.ico'),
+      webPreferences: {
+        preload: path.join(__dirname, 'preload.js'),
+        webviewTag: true,
+        autoplayPolicy: true,
+        scrollBounce: true,
+        devTools: false,
+        enableBlinkFeatures: true,
+        safeDialogsMessage: true,
+        navigateOnDragDrop: true,
+        spellcheck: true,
+      }
+    })
+
+    newWindow.loadURL('file://' + __dirname + './dev.html')
+  
+    newWindow.on('closed', function() {
+      newWindow = null
+    })
+  }
+
+  var newWindow = null
+  
+  function openChangeLogWindow() {
+    if (newWindow) {
+      newWindow.focus()
+      return
+    }
+  
+    newWindow = new BrowserWindow({
+      width: 500,
+      height: 730,
+      resizable: false,
+      title: 'Twitterr | Changelog',
+      minimizable: false,
+      fullscreenable: false,
+      autoHideMenuBar: true,
+      darkTheme: true,
+      icon: path.join(__dirname, './icon/icon.ico'),
+      webPreferences: {
+        preload: path.join(__dirname, 'preload.js'),
+        webviewTag: true,
+        autoplayPolicy: true,
+        scrollBounce: true,
+        devTools: false,
+        enableBlinkFeatures: true,
+        safeDialogsMessage: true,
+        navigateOnDragDrop: true,
+        spellcheck: true,
+      }
+    })
+
+    newWindow.loadURL('file://' + __dirname + './changelog.html')
+  
+    newWindow.on('closed', function() {
+      newWindow = null
+    })
+  }
+
+  
   const template = [
     {
       label: 'Twitterr',
       submenu: [
         {
-          label: 'Version 2.02',
+          label: 'About',
+          click() {
+            openAboutWindow()
+          }
+        },
+        {
+          label: '@KorbsStudio',
+          click() {
+            openDevWindow()
+          }
         }
       ]
     },
@@ -129,7 +248,9 @@ function createWindow () {
         },
         {
           label: 'Changelog',
-          click () { require('electron').shell.openExternal('https://korbs-studio-server.github.io/twitterr-web/changelog/') }
+          click() {
+            openChangeLogWindow()
+          }
         },
         {
           type: 'separator'
@@ -226,6 +347,7 @@ function createWindow () {
   
   const menu = Menu.buildFromTemplate(template)
   Menu.setApplicationMenu(menu)
+  
   
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
