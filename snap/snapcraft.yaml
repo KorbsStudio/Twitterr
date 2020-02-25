@@ -11,6 +11,6 @@ apps:
     command: ./twitterr
 
 parts:
-  gnu-hello:
+  gnu-twitterr:
     source: https://github.com/KorbsStudio/Twitterr/releases/download/v2.02/Twitterr-Linux.zip
     plugin: autotools
