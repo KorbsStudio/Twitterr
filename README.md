@@ -6,10 +6,10 @@ Use the mobile Twitter experience from the convenience of a desktop application 
 
 ## Installation
 ### Windows
-Run the [setup] file from releases. Sign the file is not signed, there will be security warning, the app is not harmful and open source for you to see that. After the file downloads, click on the three dots and click "Keep". Then click show more and click "Keep Anyway". When opening the file, click "More Info" and click "Run anyway".
+Run the [setup](https://github.com/KorbsStudio/Twitterr/releases) file from releases. Sign the file is not signed, there will be security warning, the app is not harmful and open source for you to see that. After the file downloads, click on the three dots and click "Keep". Then click show more and click "Keep Anyway". When opening the file, click "More Info" and click "Run anyway".
 
 ### macOS
-After downloading the ZIP file from [releases], open it. Drag "Twitterr.app" into your applications folder and it will install.
+After downloading the ZIP file from [releases](https://github.com/KorbsStudio/Twitterr/releases), open it. Drag "Twitterr.app" into your applications folder and it will install.
 
 ### Linux
 I have may this easy for you Linux users with a script I wrote:
