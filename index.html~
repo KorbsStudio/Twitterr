@@ -1,0 +1,16 @@
+<html>
+  <title>Twitterr</title>
+  <link rel="stylesheet" href="./src/css/style.css">
+  <script src="./src/js/webview.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
+  <body>
+    <webview id="twitterWebview" src="https://Twitter.com" plugins allowpopups></webview>
+  </body>
+  <script>
+     var webview = document.getElementById('twitterWebview');
+     webview.addEventListener('dom-ready', function () {
+     webview.insertCSS("")
+});
+  </script>
+</html>
