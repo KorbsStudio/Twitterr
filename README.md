@@ -16,11 +16,13 @@ After downloading the ZIP file from [releases](https://github.com/KorbsStudio/Tw
 wget "https://github.com/KorbsStudio/Twitterr/releases/download/v2.02/install-linux.sh"
 sh install-linux.sh
 ```
-Script was tested on Elementary OS
+Script was tested on Elementary OS 5.1.2, Deepin v20, Ubuntu 20.04
 
 ### To Do List
- - ~~[ ] Publish to Launchpad~~ (Failed)
- - ~~[ ] Publish to Snap successfully~~ (Failed)
  - [x] Find a way to make an item from the alt menu to open a page from the app(not externally to default web browser)
  - [x] Create first boot page
  - [x] Make the CSS work with all sizes
+ - [x] Add items to jumplist on Linux
+ - [ ] Add items to jumplist on Windows
+ - [ ] Add items to jumplist on macOS
+ 
