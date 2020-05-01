@@ -1,0 +1,18 @@
+<html>
+  <title>Twitterr</title>
+  <link rel="stylesheet" href="./src/css/style.css">
+  <script src="./src/js/webview.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
+  <body>
+    <div class="tweet">
+      <webview id="tweet" src="https://twitter.com/intent/tweet?v&url=&text="></webview>
+    </div>
+  </body>
+  <script>
+     var webview = document.getElementById('tweet');
+     webview.addEventListener('dom-ready', function () {
+     webview.insertCSS("body,button,input,select,textarea{font-family:sans-serif!important;color:#fff!important;background:#191f2b!important}div#header{display:none!important}div#bd{position:fixed;top:0!important;left:0!important;width:-webkit-fill-available!important;height:-webkit-fill-available!important;color:#fff!important;background:#191f2b!important}.action-information{color:#fff!important}textarea#status{border:3px #2d3f4c solid!important;border-radius:7px!important}")
+});
+  </script>
+</html>

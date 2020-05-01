@@ -1,12 +1,8 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, Menu, Tray} = require('electron')
 const path = require('path')
-const { Menu, Tray } = require('electron')
 const electron = require('electron')
 const ipc = require('electron').ipcRenderer
-
-
-
 
 function createWindow () {
   // Create the browser window.
@@ -20,6 +16,8 @@ function createWindow () {
     resizable: true,
     maximizable: true,
     frame: true,
+    tray: true,
+    menu: true,
     darkTheme: true,
     transparent: false,
     autoHideMenuBar: true,
@@ -29,14 +27,31 @@ function createWindow () {
       webviewTag: true,
       autoplayPolicy: true,
       scrollBounce: true,
-      devTools: false,
+      devTools: true,
       enableBlinkFeatures: true,
       safeDialogsMessage: true,
       navigateOnDragDrop: true,
       spellcheck: true,
     }
   })
+
   
+
+  mainWindow.on('minimize',function(event){
+    event.preventDefault();
+    mainWindow.hide();
+});
+
+var contextMenu = Menu.buildFromTemplate([
+  { label: 'Show App', click:  function(){
+      mainWindow.show();
+  } },
+  { label: 'Quit', click:  function(){
+      application.isQuiting = true;
+      application.quit();
+  } }
+]);
+
   
   var newWindow = null
   
@@ -59,7 +74,7 @@ function createWindow () {
       icon: path.join(__dirname, './icon/icon.ico'),
     })
 
-    newWindow.loadURL('file://' + __dirname + './about.html')
+    newWindow.loadFile('./about.html')
   
     newWindow.on('closed', function() {
       newWindow = null
@@ -97,12 +112,55 @@ function createWindow () {
       }
     })
 
-    newWindow.loadURL('file://' + __dirname + './dev.html')
+    newWindow.loadFile('./dev.html')
   
     newWindow.on('closed', function() {
       newWindow = null
     })
   }
+
+
+  var newWindow = null
+  
+  function openTweetWindow() {
+    if (newWindow) {
+      newWindow.focus()
+      return
+    }
+  
+    newWindow = new BrowserWindow({
+      width: 500,
+      height: 150,
+      resizable: false,
+      title: 'New Tweet',
+      minimizable: true,
+      fullscreenable: false,
+      autoHideMenuBar: true,
+      darkTheme: true,
+      icon: path.join(__dirname, './icon/icon.ico'),
+      webPreferences: {
+        preload: path.join(__dirname, 'preload.js'),
+        webviewTag: true,
+        autoplayPolicy: true,
+        scrollBounce: true,
+        devTools: false,
+        enableBlinkFeatures: true,
+        safeDialogsMessage: true,
+        navigateOnDragDrop: true,
+        spellcheck: true,
+      }
+    })
+
+    newWindow.loadFile('./tweet.html')
+  
+    newWindow.on('closed', function() {
+      newWindow = null
+    })
+  }
+
+
+
+
 
   var newWindow = null
   
@@ -135,7 +193,7 @@ function createWindow () {
       }
     })
 
-    newWindow.loadURL('file://' + __dirname + './changelog.html')
+    newWindow.loadFile('./changelog.html')
   
     newWindow.on('closed', function() {
       newWindow = null
@@ -151,6 +209,12 @@ function createWindow () {
           label: 'About',
           click() {
             openAboutWindow()
+          }
+        },
+        {
+          label: 'New Tweet',
+          click() {
+            openTweetWindow()
           }
         },
         {
@@ -367,6 +431,7 @@ app.on('window-all-closed', function () {
   // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== 'darwin') app.quit()
 })
+
 
 app.on('activate', function () {
   // On macOS it's common to re-create a window in the app when the

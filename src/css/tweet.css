@@ -1,0 +1,27 @@
+body, select, input, button, textarea {
+    font-family: sans-serif !important;
+    color: white !important;
+    background: #191F2B !important;
+}
+div#header {
+    display: none !important;
+}
+div#bd {
+    position: fixed;
+    top: 0px !important;
+    left: 0px !important;
+    width: -webkit-fill-available !important;
+    height: -webkit-fill-available !important;
+    color: white !important;
+    background: #191F2B !important;
+}
+.action-information {
+    color: white !important;
+}
+textarea#status {
+    border: 3px #2d3f4c solid !important;
+    border-radius: 7px !important;
+}
+::-webkit-scrollbar {
+    width: 0px !important;
+}
