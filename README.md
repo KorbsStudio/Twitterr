@@ -1,4 +1,4 @@
-[![twitterr](https://snapcraft.io//twitterr/badge.svg)](https://snapcraft.io/twitterr)
+Development on Twitterr continues next month in October.
 
 # Twitterr
 ![image](https://i.imgur.com/bk7farp.jpg)
