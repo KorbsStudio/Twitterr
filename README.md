@@ -10,7 +10,6 @@ I would like some suggestions, see [here](https://github.com/KorbsStudio/Twitter
  - [x] Experiment with webview notifications in Electron (Coming in new release)
  - [x] Experiment with context menus (Coming in new release)
  - [x] Rename application
- - [ ] New logo
  - [x] Fiddle with CSS
  - [ ] Create new Splash
  - [ ] Create new Welcome Window
