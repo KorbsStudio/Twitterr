@@ -5,6 +5,8 @@ Hello fellow users, this app will be continued to get worked on soon.
 I would like some suggestions, see [here](https://github.com/KorbsStudio/Twitterr/discussions/9).
 
 ### To Do List
+ - [x] Claim name on Snapcraft
+ - [ ] Upload to Snap Store
  - [x] Experiment with webview notifications in Electron (Coming in new release)
  - [x] Experiment with context menus (Coming in new release)
  - [x] Rename application
