@@ -7,10 +7,11 @@ I would like some suggestions, see [here](https://github.com/KorbsStudio/Twitter
 ### To Do List
  - [x] Experiment with webview notifications in Electron (Coming in new release)
  - [x] Experiment with context menus (Coming in new release)
- - [ ] Create Concept or Revival
-      - [ ] Twitter UI
-      - [ ] Welcome Screen
-      - [ ] Splash Window
+ - [x] Rename application
+ - [ ] New logo
+ - [x] Fiddle with CSS
+ - [ ] Create new Splash
+ - [ ] Create new Welcome Window
  - [x] Experiment with splash screens in Electron (View my [template](https://github.com/KorbsStudio/electron-splash-screen))
  - [x] Experiment with welcome screen in Electron (View my [template](https://github.com/KorbsStudio/electron-welcome-window))
  - [x] Experiment with os titlebar detection in Electron (View my [template](https://github.com/KorbsStudio/electron-titlebar-os-detection))
