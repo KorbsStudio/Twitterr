@@ -1,17 +1,35 @@
 name: twitterish
-base: core20
 version: '2.0.0-beta-1'
 summary: Browser Twitter and memes
 description: |
   Browser Twitter and memes
+base: core18
+confinement: strict
+grade: stable
 
-architectures:
-  - build-on: all
-    run-on: amd64
-
-grade: devel
-confinement: devmode
+apps:
+  twitterish:
+    command: twitterish/twitterish --no-sandbox
+    extensions: [gnome-3-34]
+    plugs:
+    - browser-support
+    - network
+    - network-bind
+    environment:
+      TMPDIR: $XDG_RUNTIME_DIR
 
 parts:
-  my-part:
+  twitterish:
     plugin: nil
+    source: https://github.com/KorbsStudio/twitterish.git
+    override-build: |
+        npm install electron electron-packager
+        npx electron-packager . --overwrite --platform=linux --output=release-build --prune=true
+        cp -rv ./twitterish-linux-* $SNAPCRAFT_PART_INSTALL/twitterish
+    build-snaps:
+    - node/14/stable
+    build-packages:
+    - unzip
+    stage-packages:
+    - libnss3
+    - libnspr4
