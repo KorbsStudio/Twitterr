@@ -7,10 +7,13 @@ base: core18
 confinement: strict
 grade: stable
 
+architectures:
+  - build-on: all
+    run-on: amd64
+
 apps:
   twitterish:
     command: twitterish/twitterish --no-sandbox
-    extensions: [gnome-3-34]
     plugs:
     - browser-support
     - network
