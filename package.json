@@ -1,15 +1,11 @@
 {
   "name": "twitterish",
-  "version": "2.0.0-beta-1",
+  "version": "2.0.0-beta-4",
   "description": "Browser Twitter and memes",
   "main": "./src/js/electron/index.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/KorbsStudio/Twitterr.git"
+    "build": "electron-builder build -p always"
   },
   "author": "KorbsStudio",
   "license": "MIT",
@@ -19,6 +15,18 @@
   },
   "dependencies": {
     "electron-context-menu": "^3.1.0",
-    "electron-window-state": "^5.0.3"
+    "electron-log": "^4.3.5",
+    "electron-updater": "^4.3.9"
+  },
+  "build": {
+    "appId": "com.korbsstudio.twitterish",
+    "linux": {
+      "target": "AppImage"
+    },
+    "publish": {
+      "provider":"github",
+      "owner": "KorbsStudio",
+      "repo": "twitterish"
+    }
   }
 }
