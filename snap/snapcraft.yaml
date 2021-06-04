@@ -5,6 +5,10 @@ summary: Browser Twitter and memes
 description: |
   Browser Twitter and memes
 
+architectures:
+  - build-on: amd64
+    run-on: [amd64]
+
 grade: devel
 confinement: devmode
 
