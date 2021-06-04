@@ -1,6 +1,7 @@
-const {app, BrowserWindow, Menu, shell, webContents} = require('electron')
+const {app, BrowserWindow, ipcMain, Menu, shell, webContents} = require('electron')
 const isMac = process.platform === 'darwin'
 const contextMenu = require('electron-context-menu');
+const { autoUpdater } = require('electron-updater');
 
 function createWindow () {
   const mainWindow = new BrowserWindow({
@@ -19,7 +20,8 @@ function createWindow () {
       devTools: true
     }
   })
-  mainWindow.loadURL('https://twitter.com');
+  autoUpdater.checkForUpdatesAndNotify();
+  mainWindow.loadURL('https://twitter.com/twitter');
   mainWindow.webContents.on('did-finish-load', function() {
     mainWindow.webContents.insertCSS('a.css-4rbku5.css-18t94o4.css-1dbjc4n.r-1habvwh.r-1loqt21.r-6koalj.r-eqz5dr.r-16y2uox.r-1ny4l3l.r-oyd9sg.r-13qz1uu[href="/i/bookmarks"]{display:none!important}a.css-4rbku5.css-18t94o4.css-1dbjc4n.r-1habvwh.r-1loqt21.r-6koalj.r-eqz5dr.r-16y2uox.r-1ny4l3l.r-oyd9sg.r-13qz1uu[aria-label=Lists]{display:none!important}.r-1kqtdi0{border-color:transparent!important}.css-1dbjc4n.r-1ysxnx4.r-1igl3o0.r-rull8r.r-qklmqi.r-2sztyj.r-1efd50x.r-5kkj8d.r-tbmifm{display:none!important}.r-1igl3o0{border-bottom-color:transparent!important}.r-2sztyj{border-top-color:transparent!important}.css-1dbjc4n.r-1ysxnx4.r-1igl3o0.r-rull8r.r-qklmqi.r-tbmifm{display:none!important}');
  })
@@ -94,3 +96,11 @@ const template = [
 ]
 const menu = Menu.buildFromTemplate(template)
 Menu.setApplicationMenu(menu)
+
+ipcMain.on('app_version', (event) => {
+  event.sender.send('app_version', { version: app.getVersion() });
+});
+
+ipcMain.on('restart_app', () => {
+  autoUpdater.quitAndInstall();
+});
