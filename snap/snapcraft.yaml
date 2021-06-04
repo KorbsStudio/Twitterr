@@ -1,0 +1,13 @@
+name: twitterish
+base: core20
+version: '2.0.0-beta-1'
+summary: Browser Twitter and memes
+description: |
+  Browser Twitter and memes
+
+grade: beta
+confinement: devmode
+
+parts:
+  my-part:
+    plugin: nil
