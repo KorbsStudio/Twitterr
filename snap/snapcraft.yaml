@@ -5,7 +5,7 @@ summary: Browser Twitter and memes
 description: |
   Browser Twitter and memes
 
-grade: beta
+grade: devel
 confinement: devmode
 
 parts:
