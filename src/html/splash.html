@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Twitterish</title>
+    </head>
+    <body>
+        <h1>Twitterish</h1>
+    </body>
+</html>
+<style>
+body {
+    background: #131313;
+    font-family: arial;
+    overflow: hidden;
+    color: white;
+    pointer-events: none;
+}
+::selection{background: transparent; color: white;}
+h1 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0px;
+    font-size: 42px;
+    opacity: 1;
+    transition: 1s opacity;
+    animation: 1s fadeIn linear;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0.2;
+    }
+    to {
+        opacity: 1;
+    }
+}
+</style>
